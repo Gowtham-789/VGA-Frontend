@@ -1,3 +1,4 @@
+// src/pages/BackgroundPage.jsx
 import React, { useState } from "react";
 import { generateBackgroundImages, getImageUrl } from "../services/api";
 

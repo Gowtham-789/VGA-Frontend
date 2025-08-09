@@ -1,3 +1,4 @@
+// src/components/StoryGeneration.jsx
 import React, { useState } from "react";
 import { generateStory } from "../services/api";
 
@@ -184,7 +185,7 @@ const StoryGeneration = ({
                 onClick={exportStoryJSON}
                 className="btn btn-outline btn-sm"
               >
-                📄 Export JSON
+                塘 Export JSON
               </button>
             </div>
           </div>
@@ -300,7 +301,7 @@ const StoryGeneration = ({
               onClick={handleGenerateStory}
               disabled={loading}
             >
-              🔄 Regenerate Story
+              売 Regenerate Story
             </button>
           </div>
         </div>
@@ -308,7 +309,7 @@ const StoryGeneration = ({
 
       {/* Help Section */}
       <div className="help-section">
-        <h4>💡 Tips for Better Stories</h4>
+        <h4>庁 Tips for Better Stories</h4>
         <ul className="help-list">
           <li>
             Be specific about characters, their motivations, and relationships
@@ -321,7 +322,7 @@ const StoryGeneration = ({
         </ul>
 
         <div className="example-section">
-          <h5>📝 Example Story Description:</h5>
+          <h5>統 Example Story Description:</h5>
           <div className="example-text">
             "Sarah, a curious 12-year-old girl with red hair, discovers a
             magical portal in her grandmother's attic. When she steps through,

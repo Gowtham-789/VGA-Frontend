@@ -1,3 +1,4 @@
+// src/components/BackgroundImages.jsx
 import React, { useState } from "react";
 import { generateBackgroundImages, getImageUrl } from "../services/api";
 import AssetPreview from "./AssetPreview";

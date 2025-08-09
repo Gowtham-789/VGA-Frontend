@@ -1,3 +1,4 @@
+// src/pages/ScenePage.jsx
 import React, { useState } from "react";
 import { generateSceneComposition, getImageUrl } from "../services/api";
 import AssetPreview from "../components/AssetPreview";

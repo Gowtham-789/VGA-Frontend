@@ -1,3 +1,4 @@
+// src/pages/StoryPage.jsx
 import React, { useState } from "react";
 import { generateStory } from "../services/api";
 
@@ -207,7 +208,7 @@ const StoryPage = ({ currentProject, setCurrentProject }) => {
                 const dataUri =
                   "data:application/json;charset=utf-8," +
                   encodeURIComponent(dataStr);
-                const exportFileDefaultName = "story_structure.json";
+                const exportFileDefaultName = "story_only.json";
 
                 const linkElement = document.createElement("a");
                 linkElement.setAttribute("href", dataUri);

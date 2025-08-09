@@ -1,3 +1,4 @@
+// src/components/AssetPreview.jsx
 import React from "react";
 import { getImageUrl } from "../services/api";
 

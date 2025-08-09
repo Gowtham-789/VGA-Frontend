@@ -1,3 +1,4 @@
+// src/components/CharacterImages.jsx
 import React, { useState } from "react";
 import { generateCharacterImages } from "../services/api";
 import AssetPreview from "./AssetPreview";

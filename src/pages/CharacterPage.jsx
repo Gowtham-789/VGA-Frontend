@@ -1,3 +1,4 @@
+// src/pages/CharacterPage.jsx
 import React, { useState } from "react";
 import { generateCharacterImages, getImageUrl } from "../services/api";
 

@@ -1,3 +1,4 @@
+// src/pages/PreviewPage.jsx
 import React from "react";
 import { getImageUrl } from "../services/api";
 

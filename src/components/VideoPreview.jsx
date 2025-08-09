@@ -1,3 +1,4 @@
+// src/components/VideoPreview.jsx
 import React, { useState } from "react";
 import { getImageUrl } from "../services/api";
 
