@@ -10,6 +10,7 @@ const StoryPage = ({ currentProject, setCurrentProject }) => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [rawJsonResponse, setRawJsonResponse] = useState(null);
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -19,10 +20,14 @@ const StoryPage = ({ currentProject, setCurrentProject }) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setRawJsonResponse(null); // Clear previous response
 
     try {
       const response = await generateStory(formData);
       const storyData = response.data;
+
+      // Set the raw JSON response to a state variable
+      setRawJsonResponse(storyData);
 
       const updatedProject = {
         ...currentProject,
@@ -48,6 +53,7 @@ const StoryPage = ({ currentProject, setCurrentProject }) => {
       style: "Cartoon",
     });
     setError(null);
+    setRawJsonResponse(null); // Clear raw JSON on form clear
   };
 
   return (
@@ -150,82 +156,13 @@ const StoryPage = ({ currentProject, setCurrentProject }) => {
         </form>
       </div>
 
-      {/* Story Results */}
-      {currentProject.story && (
+      {/* Raw JSON Display */}
+      {rawJsonResponse && (
         <div className="story-results">
-          <h3>Generated Story Structure</h3>
-
-          <div className="story-overview">
-            <div className="story-meta">
-              <h4>{currentProject.story.project_title}</h4>
-              <p className="story-description">
-                {currentProject.story.project_description}
-              </p>
-              <span className="style-badge">
-                {currentProject.story.visual_style}
-              </span>
-            </div>
-          </div>
-
-          {currentProject.story.scenes && (
-            <div className="scenes-preview">
-              <h4>Scenes ({currentProject.story.scenes.length})</h4>
-              <div className="scenes-grid">
-                {currentProject.story.scenes.map((scene, index) => (
-                  <div key={index} className="scene-card">
-                    <div className="scene-header">
-                      <h5>
-                        Scene {index + 1}: {scene.scene_title}
-                      </h5>
-                    </div>
-                    <p className="scene-description">
-                      {scene.scene_description}
-                    </p>
-
-                    {scene.characters && scene.characters.length > 0 && (
-                      <div className="scene-characters">
-                        <strong>Characters:</strong>
-                        <div className="character-tags">
-                          {scene.characters.map((char, charIndex) => (
-                            <span key={charIndex} className="character-tag">
-                              {char.name}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="story-actions">
-            <button
-              className="btn btn-outline"
-              onClick={() => {
-                const dataStr = JSON.stringify(currentProject.story, null, 2);
-                const dataUri =
-                  "data:application/json;charset=utf-8," +
-                  encodeURIComponent(dataStr);
-                const exportFileDefaultName = "story_only.json";
-
-                const linkElement = document.createElement("a");
-                linkElement.setAttribute("href", dataUri);
-                linkElement.setAttribute("download", exportFileDefaultName);
-                linkElement.click();
-              }}
-            >
-              Export Story JSON
-            </button>
-            <button
-              className="btn btn-secondary"
-              onClick={handleGenerateStory}
-              disabled={loading}
-            >
-              Regenerate Story
-            </button>
-          </div>
+          <h3>Raw JSON Response</h3>
+          <pre>
+            <code>{JSON.stringify(rawJsonResponse, null, 2)}</code>
+          </pre>
         </div>
       )}
 

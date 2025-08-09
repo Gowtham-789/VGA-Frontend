@@ -29,8 +29,12 @@ const App = () => {
   useEffect(() => {
     const checkApi = async () => {
       try {
-        await checkApiStatus();
-        setApiStatus("connected");
+        const response = await checkApiStatus();
+        if (response.data.status === "Server up and running!") {
+          setApiStatus("connected");
+        } else {
+          setApiStatus("error");
+        }
       } catch (error) {
         setApiStatus("error");
       }
