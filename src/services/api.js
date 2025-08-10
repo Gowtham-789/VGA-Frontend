@@ -53,10 +53,12 @@ export const generateSceneComposition = (data) =>
   withRetry(() => api.post("/scene", data));
 
 // Helper function to get image URL from file path
-export const getImageUrl = (filePath) => {
+export const getImageUrl = (filePath, type = "character") => {
   if (!filePath) return null;
   const fileName = filePath.split("/").pop() || filePath.split("\\").pop();
-  return `${API_BASE_URL}/output/${fileName}`;
+  const baseUrl = type === "background" ? "/output/background" : "/output/character";
+  return `${API_BASE_URL}${baseUrl}${fileName}`;
 };
+
 
 export default api;
