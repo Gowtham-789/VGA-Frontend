@@ -56,9 +56,10 @@ export const generateSceneComposition = (data) =>
 export const getImageUrl = (filePath, type = "character") => {
   if (!filePath) return null;
   const fileName = filePath.split("/").pop() || filePath.split("\\").pop();
-  const baseUrl = type === "background" ? "/output/background" : "/output/character";
+  const baseUrl = type === "background" ? "/output/background/" : "/output/character/";
   return `${API_BASE_URL}${baseUrl}${fileName}`;
 };
 
 
 export default api;
+
